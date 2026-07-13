@@ -362,10 +362,64 @@ a:hover { text-decoration: underline; }
 }
 
 @media print {
-  body { background: #fff; }
-  .theme-toggle { display: none; }
-  .pdf-btn { display: none; }
-  .personal-band { display: none; }
-  .page { box-shadow: none; margin: 0; max-width: 100%; }
-  .entry.standalone { break-inside: avoid; }
+  @page { size: A4; margin: 10mm; }
+
+  html, body {
+    background: #fff;
+    font-size: 9.5pt;
+    line-height: 1.32;
+  }
+
+  .theme-toggle,
+  .pdf-btn,
+  .personal-band { display: none !important; }
+
+  /* Keep the two-column layout so the sidebar doesn't take a full page */
+  .page {
+    display: grid;
+    grid-template-columns: 32% 68%;
+    max-width: 100%;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  /* Ensure sidebar colours actually print */
+  .sidebar {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    padding: 16px 14px;
+  }
+  .content { padding: 16px 18px; }
+
+  /* Tighten spacing */
+  .avatar { width: 84px; height: 84px; margin-bottom: 10px; }
+  .name { font-size: 17pt; }
+  .role { font-size: 9pt; margin: 4px 0 2px; }
+  .location { font-size: 8pt; }
+  .side-block { margin-top: 12px; }
+  .side-block h2 { margin-bottom: 7px; padding-bottom: 4px; }
+  .contact-list li,
+  .plain-list li { margin-bottom: 3px; font-size: 8.5pt; }
+  .tag-list { gap: 5px; }
+  .tag-list li { padding: 3px 8px; font-size: 8pt; }
+
+  .section { margin-bottom: 14px; }
+  .section-title { font-size: 12pt; margin-bottom: 10px; padding-bottom: 6px; }
+  .summary { font-size: 9pt; margin-bottom: 7px; }
+  .job { margin-bottom: 12px; }
+  .company-head { margin-bottom: 8px; }
+  .timeline { padding-left: 16px; }
+  .entry { margin-bottom: 11px; }
+  .entry.standalone { padding: 10px 12px; }
+  .job-title { font-size: 10pt; }
+  .job-meta, .job-company-line { font-size: 8pt; }
+  .entry p:not(.job-meta):not(.job-company-line) { font-size: 8.7pt; }
+  .highlights { font-size: 8.7pt; }
+  .highlights li { margin-bottom: 4px; }
+  .footer { margin-top: 12px; padding-top: 8px; font-size: 7.5pt; }
+
+  /* Avoid awkward breaks */
+  .section, .entry, .entry.standalone, .company-group { break-inside: avoid; }
+  .section-title { break-after: avoid; }
 }
