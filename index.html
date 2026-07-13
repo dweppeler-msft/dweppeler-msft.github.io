@@ -38,7 +38,6 @@
       <section class="side-block">
         <h2>Contact</h2>
         <ul class="contact-list">
-          <li><a id="emailLink" href="#">✉️ <span id="emailText">email me</span></a></li>
           <li><a href="https://www.linkedin.com/in/danielweppeler" target="_blank" rel="noopener">💼 linkedin.com/in/danielweppeler</a></li>
           <li><a href="https://avdpunks.com" target="_blank" rel="noopener">✍️ avdpunks.com</a></li>
         </ul>
@@ -263,17 +262,6 @@
   <script>
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Email obfuscation: assembled at runtime so scrapers can't harvest it from source
-    (function () {
-      const user = 'daniel';
-      const domain = 'weppeler' + '.' + 'de';
-      const addr = user + '@' + domain;
-      const link = document.getElementById('emailLink');
-      const label = document.getElementById('emailText');
-      if (link) link.href = 'mailto:' + addr;
-      if (label) label.textContent = addr;
-    })();
 
     // Theme toggle with persistence
     const toggle = document.getElementById('themeToggle');
