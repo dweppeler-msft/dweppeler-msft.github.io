@@ -420,6 +420,6 @@ a:hover { text-decoration: underline; }
   .footer { margin-top: 12px; padding-top: 8px; font-size: 7.5pt; }
 
   /* Avoid awkward breaks */
-  .section, .entry, .entry.standalone, .company-group { break-inside: avoid; }
+  .entry, .entry.standalone { break-inside: avoid; }
   .section-title { break-after: avoid; }
 }

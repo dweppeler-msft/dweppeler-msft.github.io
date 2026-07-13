@@ -1,36 +1,45 @@
 # Daniel Weppeler — CV Website
 
-A lightweight, responsive single-page CV built with plain HTML & CSS — ready for GitHub Pages.
+A lightweight, responsive single-page CV built with plain HTML & CSS, hosted on GitHub Pages.
 
-## Files
-- `index.html` — content and structure
-- `styles.css` — styling (light/dark theme, print-friendly)
+🔗 **Live site:** https://dweppeler-msft.github.io/
+
+## Features
+- Responsive layout with a navy sidebar and clean typography
+- Light / dark mode toggle (remembers your preference)
+- Profile photo and a personal "off the keyboard" band
+- Compact, print-friendly PDF export (fits ~2 pages)
+
+## Project structure
+```
+.
+├── index.html        # Content and structure
+├── styles.css        # Styling (light/dark theme, print layout)
+├── profile.jpg       # Header headshot
+└── hobby-trail.jpg   # Personal band photo
+```
 
 ## Preview locally
-Just open `index.html` in a browser, or serve it:
+Open `index.html` directly in a browser, or serve it:
 
 ```bash
 python3 -m http.server 8080
 # then visit http://localhost:8080
 ```
 
-## Deploy to GitHub Pages
-1. Create a new repository on GitHub (e.g. `cv` or `danielweppeler.github.io`).
-2. Push these files to the `main` branch:
-   ```bash
-   git init
-   git add .
-   git commit -m "Add CV website"
-   git branch -M main
-   git remote add origin https://github.com/<your-user>/<repo>.git
-   git push -u origin main
-   ```
-3. In the repo, go to **Settings → Pages**.
-4. Under **Build and deployment**, set **Source** to `Deploy from a branch`, pick `main` / `/ (root)`, and save.
-5. Your site goes live at `https://<your-user>.github.io/<repo>/`
-   (or `https://<your-user>.github.io/` if the repo is named `<your-user>.github.io`).
+## Deploy
+The site auto-deploys via GitHub Pages from the `main` branch. To publish updates:
 
-## Notes
-- Toggle light/dark mode with the button in the top-right (preference is saved).
-- Use the browser's **Print → Save as PDF** for a clean printable copy.
-- Update the hobbies in `index.html` (search for "Hobbies & Interests") to match your real interests.
+```bash
+git add .
+git commit -m "Update CV"
+git push origin main
+```
+
+Pages is configured under **Settings → Pages** (Source: `Deploy from a branch`, branch `main`, folder `/root`).
+
+## Tips
+- Toggle light/dark mode with the button in the top-right corner.
+- Export a PDF via the **Download as PDF** button (enable *Background graphics* in the print dialog to keep the sidebar colors).
+- Swap the photos by replacing `profile.jpg` and `hobby-trail.jpg` (keep the same filenames).
+
