@@ -260,6 +260,12 @@ a:hover { text-decoration: underline; }
 .highlights li { margin-bottom: 8px; }
 .highlights a { color: var(--accent); }
 
+/* Nested highlight block inside a standalone entry */
+.entry.standalone .job-title a { color: var(--accent); }
+.entry.standalone .highlights { margin-top: 8px; }
+.entry.standalone .highlights li { font-size: 14px; }
+.entry.standalone + .highlights { margin-top: 16px; }
+
 /* Personal band */
 .personal-band {
   position: relative;
