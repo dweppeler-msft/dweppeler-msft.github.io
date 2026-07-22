@@ -362,64 +362,76 @@ a:hover { text-decoration: underline; }
 }
 
 @media print {
-  @page { size: A4; margin: 10mm; }
+  @page { size: A4; margin: 12mm; }
 
   html, body {
     background: #fff;
     font-size: 9.5pt;
-    line-height: 1.32;
+    line-height: 1.34;
   }
 
   .theme-toggle,
   .pdf-btn,
   .personal-band { display: none !important; }
 
-  /* Keep the two-column layout so the sidebar doesn't take a full page */
+  /* Single-column flow paginates cleanly (grid does not) */
   .page {
-    display: grid;
-    grid-template-columns: 32% 68%;
+    display: block;
     max-width: 100%;
     margin: 0;
     box-shadow: none;
     border-radius: 0;
   }
 
-  /* Ensure sidebar colours actually print */
+  /* Sidebar becomes a compact header band */
   .sidebar {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    padding: 16px 14px;
+    padding: 14px 18px;
+    break-inside: avoid;
   }
-  .content { padding: 16px 18px; }
+  .content { padding: 16px 18px 0; }
 
-  /* Tighten spacing */
-  .avatar { width: 84px; height: 84px; margin-bottom: 10px; }
-  .name { font-size: 17pt; }
-  .role { font-size: 9pt; margin: 4px 0 2px; }
-  .location { font-size: 8pt; }
-  .side-block { margin-top: 12px; }
-  .side-block h2 { margin-bottom: 7px; padding-bottom: 4px; }
-  .contact-list li,
-  .plain-list li { margin-bottom: 3px; font-size: 8.5pt; }
+  /* Header: photo left, name/role right */
+  .avatar {
+    width: 74px; height: 74px;
+    float: left;
+    margin: 0 16px 8px 0;
+  }
+  .name { font-size: 16pt; }
+  .role { font-size: 9.5pt; margin: 3px 0 2px; }
+  .location { font-size: 8pt; margin-bottom: 4px; }
+
+  /* Skills / certs / languages / hobbies in a compact multi-column grid */
+  .side-block { margin-top: 10px; clear: left; }
+  .side-block h2 { margin-bottom: 6px; padding-bottom: 4px; font-size: 8.5pt; }
+  .contact-list { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  .contact-list li { margin-bottom: 0; font-size: 8.5pt; }
+  .plain-list {
+    columns: 2;
+    column-gap: 24px;
+  }
+  .plain-list li { margin-bottom: 3px; font-size: 8.5pt; break-inside: avoid; }
   .tag-list { gap: 5px; }
   .tag-list li { padding: 3px 8px; font-size: 8pt; }
 
-  .section { margin-bottom: 14px; }
-  .section-title { font-size: 12pt; margin-bottom: 10px; padding-bottom: 6px; }
-  .summary { font-size: 9pt; margin-bottom: 7px; }
-  .job { margin-bottom: 12px; }
-  .company-head { margin-bottom: 8px; }
+  /* Main content */
+  .section { margin-bottom: 12px; }
+  .section-title { font-size: 12pt; margin-bottom: 9px; padding-bottom: 6px; }
+  .summary { font-size: 9pt; margin-bottom: 6px; }
+  .job { margin-bottom: 11px; }
+  .company-head { margin-bottom: 7px; }
   .timeline { padding-left: 16px; }
-  .entry { margin-bottom: 11px; }
-  .entry.standalone { padding: 10px 12px; }
+  .entry { margin-bottom: 10px; }
+  .entry.standalone { padding: 9px 12px; }
   .job-title { font-size: 10pt; }
   .job-meta, .job-company-line { font-size: 8pt; }
   .entry p:not(.job-meta):not(.job-company-line) { font-size: 8.7pt; }
   .highlights { font-size: 8.7pt; }
   .highlights li { margin-bottom: 4px; }
-  .footer { margin-top: 12px; padding-top: 8px; font-size: 7.5pt; }
+  .footer { margin-top: 10px; padding-top: 8px; font-size: 7.5pt; }
 
   /* Avoid awkward breaks */
-  .entry, .entry.standalone { break-inside: avoid; }
+  .sidebar, .entry, .entry.standalone, .side-block { break-inside: avoid; }
   .section-title { break-after: avoid; }
 }
